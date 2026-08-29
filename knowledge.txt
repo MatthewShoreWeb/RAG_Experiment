@@ -1,0 +1,9 @@
+Matt is a 27-year-old software developer currently living in England, United Kingdom. He enjoys learning about emerging technologies, particularly artificial intelligence, search algorithms, and machine learning architectures.
+
+Matt spends his free time building practical projects to improve his technical understanding. His current main project is building a custom Retrieval-Augmented Generation (RAG) pipeline from scratch using Python, vector embeddings, and Large Language Models.
+
+Before focusing on AI development, Matt studied general computer science principles and software engineering best practices. He prefers writing clean, modular Python code and likes testing local open-weight models as well as cloud API providers.
+
+Matt lives in England, where he enjoys taking weekend walks through the countryside and visiting historical landmarks. He is an avid coffee drinker and prefers working in quiet environments when diving into deep coding tasks.
+
+For his software tools, Matt uses Python for backend automation, Sentence Transformers for embedding generation, and Google AI Studio APIs for language model inference. He uses NumPy for array math and vector calculations.

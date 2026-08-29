@@ -3,7 +3,6 @@ from google import genai
 with open("knowledge.txt", "r", encoding="utf-8") as f:
     raw_text = f.read()
 
-# Splitting the text by paragraphs:
 chunks = [p.strip() for p in raw_text.split("\n\n") if p.strip()]
 
 def create_prompt(query, context):

@@ -1,22 +1,30 @@
-from sentence_transformers import SentenceTransformer
-import numpy as np
+from google import genai
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
-chunks = [...]
-vectors = model.encode(chunks)
-
-def retrieve(query, k=3):
-    q = model.encode([query])[0]
-    scores = vectors @ q / (np.linalg.norm(vectors, axis=1) * np.linalg.norm(q))
-    top_k = np.argsort(scores)[-k:][::-1]
-    return [chunks[i] for i in top_k]
-
-# 1. Load raw text
 with open("knowledge.txt", "r", encoding="utf-8") as f:
     raw_text = f.read()
 
-# 2. Chunk text by paragraph
+# Splitting the text by paragraphs:
 chunks = [p.strip() for p in raw_text.split("\n\n") if p.strip()]
 
-# Now pass chunks into your existing script
-vectors = model.encode(chunks)
+def create_prompt(query, context):
+    prompt = f"""
+        Answer the user's question using ONLY the provided context below. If the answer cannot be found in the context, reply 'I don't know based on the provided context'
+
+        Context:
+        {context}
+
+        Question:
+        {query}
+    """
+    client = genai.Client(api_key="removed")
+
+    response = client.models.generate_content(
+        model="gemini-3.6-flash",
+        contents=prompt,
+    )
+
+    return response.text;
+
+user_question = "What is my name?"
+print(create_prompt(user_question, chunks))
+
